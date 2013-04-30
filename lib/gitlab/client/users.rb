@@ -44,6 +44,18 @@ class Gitlab::Client
       post("/users", :body => body)
     end
 
+    # Destroys a user.
+    # Will destroy a user.
+    #
+    # @example
+    #   Gitlab.destroy_user(1)
+    #
+    # @param  [Integer] id The ID of a user.
+    # @return [Gitlab::ObjectifiedHash]
+    def destroy_user(id=nil)
+      delete("/users/#{id}")
+    end
+
     # Creates a new user session.
     #
     # @example
