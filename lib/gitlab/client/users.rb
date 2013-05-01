@@ -104,6 +104,19 @@ class Gitlab::Client
       post("/user/keys", :body => {:title => title, :key => key})
     end
 
+    # Adds a new SSH key to a specified user.
+    #
+    # @example
+    #   Gitlab.add_ssh_key('id', 'key title', 'key body')
+    #
+    # @param  [Integer] id The id of a user.
+    # @param  [String] title The title of an SSH key.
+    # @param  [String] key The SSH key body.
+    # @return [Gitlab::ObjectifiedHash] Information about added SSH key.
+    def add_ssh_key(id, title, key)
+      post("/users/#{id}/keys", :body => {:title => title, :key => key})
+    end
+
     # Deletes an SSH key.
     #
     # @example
